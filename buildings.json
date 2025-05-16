@@ -1,0 +1,61 @@
+{
+  "buildings": [
+    {
+      "name": "Tòa Nhà Merview",
+      "owner": "Nguyễn Văn An",
+      "floors": 3,
+      "price": 4800000,
+      "waterBillingMethod": "Theo tháng",
+      "address": "123 Đường A, Quận B, TP.HCM",
+      "phone": "0909123456",
+      "email": "an.nguyen@example.com",
+      "idCardNumber": "123456789",
+      "idCardIssuedPlace": "Công an TP.HCM",
+      "idCardIssuedDate": "2015-05-20",
+      "payment": {
+        "accountHolder": "Nguyễn Văn An",
+        "accountNumber": "9704000000000001",
+        "bankName": "Ngân hàng ACB"
+      },
+      "thumbnail": "building-a.png"
+    },
+    {
+      "name": "Tòa Nhà Merview",
+      "owner": "Trần Thị Bình",
+      "floors": 6,
+      "price": 5200000,
+      "waterBillingMethod": "Theo m3",
+      "address": "456 Đường B, Quận C, TP.HCM",
+      "phone": "0909988776",
+      "email": "binh.tran@example.com",
+      "idCardNumber": "987654321",
+      "idCardIssuedPlace": "Công an Hà Nội",
+      "idCardIssuedDate": "2018-03-15",
+      "payment": {
+        "accountHolder": "Trần Thị Bình",
+        "accountNumber": "9704000000000002",
+        "bankName": "Ngân hàng Vietcombank"
+      },
+      "thumbnail": "building-b.png"
+    },
+    {
+      "name": "Tòa Nhà Merview",
+      "owner": "Lê Quốc Cường",
+      "floors": 4,
+      "price": 5000000,
+      "waterBillingMethod": "Theo tháng",
+      "address": "789 Đường C, Quận D, TP.HCM",
+      "phone": "0911223344",
+      "email": "cuong.le@example.com",
+      "idCardNumber": "192837465",
+      "idCardIssuedPlace": "Công an Đà Nẵng",
+      "idCardIssuedDate": "2020-07-10",
+      "payment": {
+        "accountHolder": "Lê Quốc Cường",
+        "accountNumber": "9704000000000003",
+        "bankName": "Ngân hàng BIDV"
+      },
+      "thumbnail": "building-c.png"
+    }
+  ]
+}
