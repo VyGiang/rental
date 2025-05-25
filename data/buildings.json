@@ -1,0 +1,151 @@
+[
+  {
+    "id": 1,
+    "name": "Tòa Nhà Merview A",
+    "owner": "Nguyễn Văn An",
+    "price": 4800000,
+    "waterCostType": "Theo tháng",
+    "address": "123 Đường A, Quận B, TP.HCM",
+    "phone": "0909123456",
+    "email": "an.nguyen@example.com",
+    "ownerIdCard": "123456789",
+    "idCardPlace": "Công an TP.HCM",
+    "idCardDate": "2015-05-20",
+    "bankAccount": {
+      "owner": "Nguyễn Văn An",
+      "number": "9704000000000001",
+      "bank": "Ngân hàng ACB"
+    },
+    "images": ["building-a-1.png", "building-a-2.png"],
+    "floors": [
+      {
+        "floorNumber": 1,
+        "rooms": [
+          {
+            "id": 101,
+            "name": "101",
+            "area": 25,
+            "price": 3000000,
+            "assets": "Giường, tủ lạnh, máy lạnh",
+            "images": ["room_101.png"]
+          },
+          {
+            "id": 102,
+            "name": "102",
+            "area": 28,
+            "price": 3200000,
+            "assets": "Giường, máy lạnh",
+            "images": ["room_102.png"]
+          }
+        ]
+      },
+      {
+        "floorNumber": 2,
+        "rooms": [
+          {
+            "id": 201,
+            "name": "201",
+            "area": 30,
+            "price": 3500000,
+            "assets": "Giường, máy giặt",
+            "images": ["room_201.png"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Tòa Nhà Merview B",
+    "owner": "Trần Thị Bình",
+    "price": 5200000,
+    "waterCostType": "Theo m3",
+    "address": "456 Đường B, Quận C, TP.HCM",
+    "phone": "0909988776",
+    "email": "binh.tran@example.com",
+    "ownerIdCard": "987654321",
+    "idCardPlace": "Công an Hà Nội",
+    "idCardDate": "2018-03-15",
+    "bankAccount": {
+      "owner": "Trần Thị Bình",
+      "number": "9704000000000002",
+      "bank": "Ngân hàng Vietcombank"
+    },
+    "images": ["building-b-1.png"],
+    "floors": [
+      {
+        "floorNumber": 1,
+        "rooms": [
+          {
+            "id": 103,
+            "name": " 103",
+            "area": 22,
+            "price": 2800000,
+            "assets": "Giường, tủ lạnh",
+            "images": []
+          }
+        ]
+      },
+      {
+        "floorNumber": 2,
+        "rooms": [
+          {
+            "id": 202,
+            "name": "202",
+            "area": 27,
+            "price": 3100000,
+            "assets": "Giường, máy lạnh",
+            "images": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tòa Nhà Merview C",
+    "owner": "Lê Quốc Cường",
+    "price": 5000000,
+    "waterCostType": "Theo tháng",
+    "address": "789 Đường C, Quận D, TP.HCM",
+    "phone": "0911223344",
+    "email": "cuong.le@example.com",
+    "ownerIdCard": "192837465",
+    "idCardPlace": "Công an Đà Nẵng",
+    "idCardDate": "2020-07-10",
+    "bankAccount": {
+      "owner": "Lê Quốc Cường",
+      "number": "9704000000000003",
+      "bank": "Ngân hàng BIDV"
+    },
+    "images": ["building-c.png"],
+    "floors": [
+      {
+        "floorNumber": 1,
+        "rooms": [
+          {
+            "id": 104,
+            "name": "104",
+            "area": 26,
+            "price": 2950000,
+            "assets": "Giường, quạt máy",
+            "images": []
+          }
+        ]
+      },
+      {
+        "floorNumber": 2,
+        "rooms": [
+          {
+            "id": 203,
+            "name": " 203",
+            "area": 29,
+            "price": 3250000,
+            "assets": "Giường, máy lạnh",
+            "images": ["room_203.png"]
+          }
+        ]
+      }
+    ]
+  }
+]

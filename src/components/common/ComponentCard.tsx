@@ -1,40 +1,51 @@
 import React from "react"
 
 interface ComponentCardProps {
-  title: string
+  title: React.ReactNode
+  text?: string
   icon?: React.ReactNode
   children: React.ReactNode
   className?: string // Additional custom classes for styling
-  desc?: string // Description text
   rightAction?: React.ReactNode
+  leftAction?: React.ReactNode
 }
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
+  text,
   icon,
   children,
   className = "",
-  desc = "",
   rightAction,
+  leftAction,
 }) => {
   return (
     <div
       className={`rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] ${className}`}
     >
       {/* Card Header */}
-      <div className="px-6 py-5 flex justify-between items-center">
-        <div>
-          <h3 className="text-base font-medium text-gray-800 dark:text-white/90 flex items-center space-x-2">
-            <span>{icon}</span>
-            <span>{title}</span>
-          </h3>
-          {desc && (
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {desc}
-            </p>
-          )}
+      <div className="px-6 py-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        {/* responsive icon tren sm:🔽 Thay đổi chỗ này: từ flex-col -> sm:flex-row */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+          {/* icon + title cùng hàng từ sm */}
+          <div className="flex items-center gap-2">
+            {icon && <span className="text-xl">{icon}</span>}
+            <h3 className="text-base text-gray-800 dark:text-white/90">
+              {text && (
+                <span className="font-normal text-gray-500 dark:text-gray-300 mr-1">
+                  {text}
+                </span>
+              )}
+              <span className="font-semibold">{title}</span>
+            </h3>
+          </div>
+
+          {leftAction && <div className="mt-2 sm:mt-0">{leftAction}</div>}
         </div>
-        {rightAction && <div>{rightAction}</div>}
+
+        {rightAction && (
+          <div className="flex flex-wrap gap-2">{rightAction}</div>
+        )}
       </div>
 
       {/* Card Body */}

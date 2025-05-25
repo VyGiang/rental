@@ -1,0 +1,78 @@
+[
+  {
+    "id": 201,
+    "name": "Nguyễn Văn A",
+    "phone": "0909123456",
+    "email": "tenant1@email.com",
+    "gender": "Nam",
+    "dob": "1990-05-01",
+    "idCard": "025467891",
+    "idCardDate": "2010-01-01",
+    "idCardPlace": "Công an TP.HCM",
+    "address": "456 Đường DEF",
+    "job": "Nhân viên văn phòng",
+    "bankInfo": {
+      "bank": "ACB",
+      "accountNumber": "99887766",
+      "branch": "TP.HCM"
+    },
+    "idImage": "cccd_nguyenvana.png"
+  },
+  {
+    "id": 202,
+    "name": "Trần Thị B",
+    "phone": "0909123457",
+    "email": "tenant2@email.com",
+    "gender": "Nữ",
+    "dob": "1992-07-12",
+    "idCard": "025467892",
+    "idCardDate": "2012-06-15",
+    "idCardPlace": "Công an Hà Nội",
+    "address": "789 Đường XYZ",
+    "job": "Giáo viên",
+    "bankInfo": {
+      "bank": "TPBank",
+      "accountNumber": "11223344",
+      "branch": "Hà Nội"
+    },
+    "idImage": "cccd_tranthib.png"
+  },
+  {
+    "id": 203,
+    "name": "Lê Văn C",
+    "phone": "0909123458",
+    "email": "tenant3@email.com",
+    "gender": "Nam",
+    "dob": "1988-03-09",
+    "idCard": "025467893",
+    "idCardDate": "2008-09-10",
+    "idCardPlace": "Công an Đà Nẵng",
+    "address": "321 Đường MNO",
+    "job": "Kỹ sư phần mềm",
+    "bankInfo": {
+      "bank": "MB Bank",
+      "accountNumber": "55667788",
+      "branch": "Đà Nẵng"
+    },
+    "idImage": "cccd_levanc.png"
+  },
+  {
+    "id": 204,
+    "name": "Phạm Thị D",
+    "phone": "0909123459",
+    "email": "tenant4@email.com",
+    "gender": "Nữ",
+    "dob": "1995-11-25",
+    "idCard": "025467894",
+    "idCardDate": "2015-01-20",
+    "idCardPlace": "Công an Cần Thơ",
+    "address": "654 Đường QRS",
+    "job": "Nhân viên kế toán",
+    "bankInfo": {
+      "bank": "Sacombank",
+      "accountNumber": "77889900",
+      "branch": "Cần Thơ"
+    },
+    "idImage": "cccd_phamthid.png"
+  }
+]

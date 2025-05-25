@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "buildingId": 1,
+    "floorNumber": 1,
+    "roomId": 101,
+    "customerId": 201,
+    "contractCode": "HD2024-001",
+    "name": "Hợp đồng thuê 1 năm",
+    "startDate": "2024-05-01",
+    "endDate": "2025-05-01",
+    "paymentCycle": "monthly",
+    "note": "Không nuôi thú cưng",
+    "services": [
+      {
+        "name": "Phí giữ xe",
+        "unit": "tháng",
+        "price": 100000
+      },
+      {
+        "name": "Phí Internet",
+        "unit": "tháng",
+        "price": 150000
+      }
+    ]
+  }
+]

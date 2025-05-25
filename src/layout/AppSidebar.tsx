@@ -22,29 +22,29 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
-    name: "Dashboard",
+    name: "Bảng Điều Khiển",
     path: "/",
   },
   {
     icon: <Buiding />,
-    name: "Buidings",
-    path: "/buidings",
+    name: "Quản Lí Tòa Nhà",
+    path: "/buildings",
   },
   {
     icon: <Rooms />,
-    name: "Rooms",
-    path: "/profile",
+    name: "Quản Lí Phòng",
+    path: "/rooms",
   },
 
   {
-    name: "Customer Profiles",
+    name: "Hồ Sơ Khách Hàng",
     icon: <Customers />,
-    path: "/form-elements",
+    path: "/customers",
   },
   {
-    name: "Contracts",
+    name: "Hợp Đồng",
     icon: <Contracts />,
-    path: "/basic-tables",
+    path: "/contracts",
   },
 ]
 

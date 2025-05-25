@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 interface Option {
-  value: string;
-  label: string;
+  value: string | number
+  label: string
 }
 
 interface SelectProps {
-  options: Option[];
-  placeholder?: string;
-  onChange: (value: string) => void;
-  className?: string;
-  defaultValue?: string;
+  options: Option[]
+  placeholder?: string
+  onChange: (value: string) => void
+  className?: string
+  defaultValue?: string
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -21,13 +21,13 @@ const Select: React.FC<SelectProps> = ({
   defaultValue = "",
 }) => {
   // Manage the selected value
-  const [selectedValue, setSelectedValue] = useState<string>(defaultValue);
+  const [selectedValue, setSelectedValue] = useState<string>(defaultValue)
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    setSelectedValue(value);
-    onChange(value); // Trigger parent handler
-  };
+    const value = e.target.value
+    setSelectedValue(value)
+    onChange(value) // Trigger parent handler
+  }
 
   return (
     <select
@@ -58,7 +58,7 @@ const Select: React.FC<SelectProps> = ({
         </option>
       ))}
     </select>
-  );
-};
+  )
+}
 
-export default Select;
+export default Select

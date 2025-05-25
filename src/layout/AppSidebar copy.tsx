@@ -1,36 +1,30 @@
-"use client";
-import React, { useEffect, useRef, useState,useCallback } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useSidebar } from "../context/SidebarContext";
+"use client"
+import React, { useEffect, useRef, useState, useCallback } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { useSidebar } from "../context/SidebarContext"
 import {
-  BoxCubeIcon,
-  ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
   PageIcon,
-  PieChartIcon,
-  PlugInIcon,
   Buiding,
   Customers,
-  Rooms
-} from "../icons/index";
-
-
+  Rooms,
+} from "../icons/index"
 
 type NavItem = {
-  name: string;
-  icon: React.ReactNode;
-  path?: string;
-  subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
-};
+  name: string
+  icon: React.ReactNode
+  path?: string
+  subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[]
+}
 
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: true , new:true}],
+    subItems: [{ name: "Ecommerce", path: "/", pro: true, new: true }],
   },
   {
     icon: <Buiding />,
@@ -45,7 +39,7 @@ const navItems: NavItem[] = [
 
   {
     name: "Customer Profiles",
-    icon: <Customers  />,
+    icon: <Customers />,
     subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
   },
   {
@@ -61,7 +55,7 @@ const navItems: NavItem[] = [
   //     { name: "404 Error", path: "/error-404", pro: false },
   //   ],
   // },
-];
+]
 
 const othersItems: NavItem[] = [
   {
@@ -92,11 +86,11 @@ const othersItems: NavItem[] = [
       { name: "Sign Up", path: "/signup", pro: false },
     ],
   },
-];
+]
 
 const AppSidebar: React.FC = () => {
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
-  const pathname = usePathname();
+  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar()
+  const pathname = usePathname()
 
   const renderMenuItems = (
     navItems: NavItem[],
@@ -121,7 +115,7 @@ const AppSidebar: React.FC = () => {
               }`}
             >
               <span
-              //tao Icon cho side bar
+                //tao Icon cho side bar
                 className={` ${
                   openSubmenu?.type === menuType && openSubmenu?.index === index
                     ? "menu-item-icon-active"
@@ -131,11 +125,11 @@ const AppSidebar: React.FC = () => {
                 {nav.icon}
               </span>
               {(isExpanded || isHovered || isMobileOpen) && (
-                //tạo chữ kế bên icon 
+                //tạo chữ kế bên icon
                 <span className={`menu-item-text`}>{nav.name}</span>
               )}
               {(isExpanded || isHovered || isMobileOpen) && (
-                // nút mũi tên kế bên icon 
+                // nút mũi tên kế bên icon
                 <ChevronDownIcon
                   className={`ml-auto w-5 h-5 transition-transform duration-200  ${
                     openSubmenu?.type === menuType &&
@@ -149,7 +143,7 @@ const AppSidebar: React.FC = () => {
           ) : (
             nav.path && (
               <Link
-              // tao Link nếu như không có subItems
+                // tao Link nếu như không có subItems
                 href={nav.path}
                 className={`menu-item group ${
                   isActive(nav.path) ? "menu-item-active" : "menu-item-inactive"
@@ -177,7 +171,7 @@ const AppSidebar: React.FC = () => {
           {nav.subItems && (isExpanded || isHovered || isMobileOpen) && (
             <div
               ref={(el) => {
-                subMenuRefs.current[`${menuType}-${index}`] = el;
+                subMenuRefs.current[`${menuType}-${index}`] = el
               }}
               className="overflow-hidden transition-all duration-300"
               style={{
@@ -232,77 +226,71 @@ const AppSidebar: React.FC = () => {
         </li>
       ))}
     </ul>
-  );
+  )
 
   // cú pháp const [state, setState] = useState<TYPE>(initialValue);{ type: "main", index: 0/3}
   const [openSubmenu, setOpenSubmenu] = useState<{
-    type: "main" | "others";
-    index: number;
-  } | null>(null);
- 
-  
-  const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
-  );
+    type: "main" | "others"
+    index: number
+  } | null>(null)
+
+  const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>({})
 
   //useRef là một hook giúp bạn giữ lại một giá trị qua các lần render mà không làm component render lại.
   // Trong trường hợp này, bạn dùng useRef để giữ một đối tượng (object) chứa các ref trỏ tới các phần tử HTMLDivElement.mỗi key là string (ví dụ: "dashboard", "settings"...),mỗi value là HTMLDivElement hoặc null
-  const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
-
-
-
+  const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
   // const isActive = (path: string) => path === pathname;
   //useCallbacklà 1 hàm, có tham số là path (chuỗi).
   //useCallback(..., [pathname]) nghĩa là: Hàm isActive chỉ được tạo lại khi pathname thay đổi.
   //isActive là hàm dùng để kiểm tra xem một đường dẫn con (subItem.path) có trùng với đường dẫn hiện tại hay không.
-   const isActive = useCallback((path: string) => path === pathname, [pathname]);
-   console.log(pathname)
-   
-
+  const isActive = useCallback((path: string) => path === pathname, [pathname])
+  console.log(pathname)
 
   useEffect(() => {
     // Check if the current path matches any submenu item
-    let submenuMatched = false;//Đây là biến cờ để ghi nhớ xem có submenu nào đang active không.
-    ["main", "others"].forEach((menuType) => {//Duyệt qua hai loại menu: "main" và "others".
-      const items = menuType === "main" ? navItems : othersItems;//Nếu menuType là "main" → lấy navItems
-      items.forEach((nav, index) => {//Duyệt từng nav (một item) trong danh sác
+    let submenuMatched = false //Đây là biến cờ để ghi nhớ xem có submenu nào đang active không.
+    ;["main", "others"].forEach((menuType) => {
+      //Duyệt qua hai loại menu: "main" và "others".
+      const items = menuType === "main" ? navItems : othersItems //Nếu menuType là "main" → lấy navItems
+      items.forEach((nav, index) => {
+        //Duyệt từng nav (một item) trong danh sác
         if (nav.subItems) {
           nav.subItems.forEach((subItem) => {
-            if (isActive(subItem.path)) {//Duyệt từng subItem, dùng isActive để kiểm tra nếu subItem.path === pathname.
+            if (isActive(subItem.path)) {
+              //Duyệt từng subItem, dùng isActive để kiểm tra nếu subItem.path === pathname.
               setOpenSubmenu({
                 type: menuType as "main" | "others",
                 index,
-              });
-              submenuMatched = true;
+              })
+              submenuMatched = true
             }
-          });
+          })
         }
-      });
-    });
+      })
+    })
 
     // If no submenu item matches, close the open submenu
     if (!submenuMatched) {
-      setOpenSubmenu(null);
+      setOpenSubmenu(null)
     }
-  }, [pathname,isActive]);
+  }, [pathname, isActive])
 
-//Chiều cao mỗi mục submenu:@utility menu-dropdown-item/ Khoảng cách giữa các mục: <ul className="mt-2 space-y-1 ml-9">
+  //Chiều cao mỗi mục submenu:@utility menu-dropdown-item/ Khoảng cách giữa các mục: <ul className="mt-2 space-y-1 ml-9">
   useEffect(() => {
     // Set the height of the submenu items when the submenu is opened
     if (openSubmenu !== null) {
-      const key = `${openSubmenu.type}-${openSubmenu.index}`;
+      const key = `${openSubmenu.type}-${openSubmenu.index}`
       if (subMenuRefs.current[key]) {
         setSubMenuHeight((prevHeights) => ({
           ...prevHeights,
           [key]: subMenuRefs.current[key]?.scrollHeight || 0,
-        }));
+        }))
       }
     }
-  }, [openSubmenu]);
+  }, [openSubmenu])
 
-
-  //  hiểu tai sao dùng arrow function,   hiểu tai sao phai biết prevOpenSubmenu  tồn tại hay không vì .type là null se dan den crash 
+  //  hiểu tai sao dùng arrow function,   hiểu tai sao phai biết prevOpenSubmenu  tồn tại hay không vì .type là null se dan den crash
   const handleSubmenuToggle = (index: number, menuType: "main" | "others") => {
     setOpenSubmenu((prevOpenSubmenu) => {
       if (
@@ -310,11 +298,11 @@ const AppSidebar: React.FC = () => {
         prevOpenSubmenu.type === menuType &&
         prevOpenSubmenu.index === index
       ) {
-        return null;// nếu OpenSubmenu đang mở thì set là null để đóng 
+        return null // nếu OpenSubmenu đang mở thì set là null để đóng
       }
-      return { type: menuType, index }; // ngược lại thì mở cái OpenSubmenu  khác 
-    });
-  };
+      return { type: menuType, index } // ngược lại thì mở cái OpenSubmenu  khác
+    })
+  }
 
   return (
     <aside
@@ -404,7 +392,7 @@ const AppSidebar: React.FC = () => {
         </nav>
       </div>
     </aside>
-  );
-};
+  )
+}
 
-export default AppSidebar;
+export default AppSidebar
