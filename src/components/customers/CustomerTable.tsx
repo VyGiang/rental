@@ -1,7 +1,7 @@
 "use client"
-
 import { ChevronDownIcon, Edit, SortDown, SortUp } from "@/icons"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import test from "../../../data/test.json"
 import Select from "../form/Select"
 import { Dropdown } from "../ui/dropdown/Dropdown"
@@ -12,6 +12,9 @@ export default function CustomerTable() {
     { value: "5", label: "5" },
     { value: "10", label: "10" },
   ]
+
+  const [isSelectOpen, setIsSelectOpen] = useState(false)
+
   const [sortField, setSortField] = useState<keyof (typeof data)[0] | null>(
     null
   )
@@ -95,6 +98,12 @@ export default function CustomerTable() {
     setOpenDropdownCustomerId(null)
   }
 
+  const router = useRouter()
+
+  const handleEditCustomer = () => {
+    router.push("/customers/editCustomer")
+  }
+
   useEffect(() => {
     console.log("ID đã chọn:", selectedIds)
 
@@ -108,21 +117,32 @@ export default function CustomerTable() {
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center gap-2">
           <label className="text-sm whitespace-nowrap">Hiển thị</label>
-          <div className="relative w-[120px]">
+          <div
+            className="relative w-[120px]"
+            tabIndex={-1}
+            onFocus={() => setIsSelectOpen(true)}
+            onBlur={() => setIsSelectOpen(false)}
+          >
             <Select
               options={options}
               placeholder="Số dòng"
-              defaultValue="5" // 👈 đúng kiểu string
+              defaultValue="5"
               onChange={(value) => {
-                setPageSize(Number(value)) // chuyển từ string thành number
-                setCurrentPage(1) // reset về trang đầu tiên
+                setPageSize(Number(value))
+                setCurrentPage(1)
+                setIsSelectOpen(false) // Đóng lại khi chọn xong
               }}
               className="dark:bg-dark-900"
             />
-            <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
-              <ChevronDownIcon className="w-4 h-4" />
+            <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400 transition-transform duration-200">
+              <ChevronDownIcon
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  isSelectOpen ? "rotate-180" : ""
+                }`}
+              />
             </span>
           </div>
+
           <span className="text-sm whitespace-nowrap">dòng</span>
         </div>
       </div>
@@ -322,7 +342,12 @@ export default function CustomerTable() {
                         onClose={closeDropdown}
                         className="w-40 p-2"
                       >
-                        <DropdownItem onItemClick={closeDropdown}>
+                        <DropdownItem
+                          onItemClick={() => {
+                            closeDropdown()
+                            handleEditCustomer()
+                          }}
+                        >
                           Chỉnh sửa
                         </DropdownItem>
                         <DropdownItem

@@ -1,17 +1,25 @@
 "use client"
-
 import { ChevronDownIcon, Edit, SortDown, SortUp } from "@/icons"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import test from "../../../data/test2.json"
 import Select from "../form/Select"
 import { Dropdown } from "../ui/dropdown/Dropdown"
 import { DropdownItem } from "../ui/dropdown/DropdownItem"
 
 export default function ContractTable() {
+  const router = useRouter()
+
+  const handleEditContract = () => {
+    router.push("/contracts/editContract")
+  }
+
   const options = [
     { value: "5", label: "5" },
     { value: "10", label: "10" },
   ]
+  const [isSelectOpen, setIsSelectOpen] = useState(false)
+
   const [sortField, setSortField] = useState<keyof (typeof data)[0] | null>(
     null
   )
@@ -86,7 +94,12 @@ export default function ContractTable() {
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center gap-2">
           <label className="text-sm whitespace-nowrap">Hiển thị</label>
-          <div className="relative w-[120px]">
+          <div
+            className="relative w-[120px]"
+            tabIndex={-1}
+            onFocus={() => setIsSelectOpen(true)} //sau đó dùng onFocus/onBlur trên div bọc ngoài <Select /> để điều khiển state này,
+            onBlur={() => setIsSelectOpen(false)}
+          >
             <Select
               options={options}
               placeholder="Số dòng"
@@ -94,13 +107,19 @@ export default function ContractTable() {
               onChange={(value) => {
                 setPageSize(Number(value))
                 setCurrentPage(1)
+                setIsSelectOpen(false) // Đóng lại khi chọn xong
               }}
               className="dark:bg-dark-900"
             />
-            <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
-              <ChevronDownIcon className="w-4 h-4" />
+            <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400 transition-transform duration-200">
+              <ChevronDownIcon
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  isSelectOpen ? "rotate-180" : ""
+                }`}
+              />
             </span>
           </div>
+
           <span className="text-sm whitespace-nowrap">dòng</span>
         </div>
 
@@ -365,7 +384,12 @@ export default function ContractTable() {
                         onClose={closeDropdown}
                         className="w-40 p-2"
                       >
-                        <DropdownItem onItemClick={closeDropdown}>
+                        <DropdownItem
+                          onItemClick={() => {
+                            closeDropdown()
+                            handleEditContract()
+                          }}
+                        >
                           Sửa hợp đồng
                         </DropdownItem>
                         <DropdownItem onItemClick={closeDropdown}>

@@ -1,12 +1,13 @@
-import BuildingInput from "@/components/form/form-elements/BuildingInput"
-import PaymentInputs from "@/components/form/form-elements/PaymentInput"
+import ContractInput from "@/components/form/form-elements/ContractInput"
+import CustomerInput from "@/components/form/form-elements/CustomerInput"
 import SaveButton from "@/components/form/form-elements/SaveButton"
+import ServiceInput from "@/components/form/form-elements/ServiceInput"
 import { Metadata } from "next"
 import React from "react"
 
 export const metadata: Metadata = {
-  title: "Next.js Add Building Form  | RenAdmin",
-  description: "This is Add Building Form page for RenAdmin ",
+  title: "Next.js Add Contract Form  | RenAdmin",
+  description: "This is Add Contract Form page for RenAdmin ",
   icons: {
     icon: "/favicon.ico",
   },
@@ -19,14 +20,13 @@ export default function page() {
         className="text-xl font-semibold text-gray-800 dark:text-white/90 pb-4"
         x-text="pageName"
       >
-        Thêm toà nhà
+        Chỉnh sửa hợp đồng
       </h2>
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+      <div className="grid grid-cols-1">
         <div className="space-y-6">
-          <BuildingInput />
-        </div>
-        <div className="space-y-6">
-          <PaymentInputs />
+          <ContractInput />
+          <CustomerInput />
+          <ServiceInput />
           <SaveButton />
         </div>
       </div>

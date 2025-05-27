@@ -16,7 +16,7 @@ export default function CustomerInfoInput() {
     console.log("Selected value:", value)
   }
   return (
-    <ComponentCard title="Thông tin toà nhà">
+    <ComponentCard title="Thông tin khách hàng">
       <div className="space-y-6">
         <div>
           <Label>

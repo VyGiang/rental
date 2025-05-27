@@ -1,12 +1,17 @@
 "use client"
-
 import { EditColor } from "@/icons"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function InfoContract() {
   const [selectedTab, setSelectedTab] = useState<"hopdong" | "lichsu">(
     "hopdong"
   )
+  const router = useRouter()
+
+  const handleEditContract = () => {
+    router.push("/contracts/editContract")
+  }
 
   return (
     <div className="rounded-2xl border border-gray-300 p-4 space-y-4 w-full bg-white">
@@ -42,7 +47,7 @@ export default function InfoContract() {
             <div className="font-semibold text-black ">
               Hợp đồng thuê phòng trọ 101
               <button className="inline-flex items-center justify-center ml-1 ">
-                <EditColor />
+                <EditColor onClick={handleEditContract} />
               </button>
             </div>
           </div>

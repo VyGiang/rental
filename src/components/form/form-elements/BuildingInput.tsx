@@ -5,7 +5,6 @@ import Label from "../Label"
 import Input from "../input/InputField"
 import Select from "../Select"
 import { ChevronDownIcon } from "../../../icons"
-import DatePicker from "../date-picker"
 
 export default function BuildingInput() {
   const options = [
@@ -32,16 +31,17 @@ export default function BuildingInput() {
         </div>
         <div>
           <Label>
+            Địa chỉ<span className="text-red-700">*</span>
+          </Label>
+          <Input type="text" className="w-full" />
+        </div>
+        <div>
+          <Label>
             Số tầng <span className="text-red-700">*</span>
           </Label>
           <Input type="number" className="w-full" />
         </div>
-        <div>
-          <Label>
-            Giá phòng <span className="text-red-700">*</span>
-          </Label>
-          <Input type="number" className="w-full" />
-        </div>
+
         <div>
           <Label>
             Cách tính nước <span className="text-red-700">*</span>
@@ -58,12 +58,7 @@ export default function BuildingInput() {
             </span>
           </div>
         </div>
-        <div>
-          <Label>
-            Địa chỉ<span className="text-red-700">*</span>
-          </Label>
-          <Input type="text" className="w-full" />
-        </div>
+
         <div>
           <Label>
             Điện thoại<span className="text-red-700">*</span>
@@ -72,32 +67,9 @@ export default function BuildingInput() {
         </div>
         <div>
           <Label>
-            Email<span className="text-red-700">*</span>
+            Giá thuê<span className="text-red-700">*</span>
           </Label>
           <Input type="text" className="w-full" />
-        </div>
-        <div>
-          <Label>
-            CCCD chủ sở hữu<span className="text-red-700">*</span>
-          </Label>
-          <Input type="number" className="w-full" />
-        </div>
-        <div>
-          <Label>
-            Nơi cấp CCCD chủ sở hữu<span className="text-red-700">*</span>
-          </Label>
-          <Input type="text" className="w-full" />
-        </div>
-        <div>
-          <DatePicker
-            id="date-picker"
-            label="Ngày cấp CCCD chủ sở hữu"
-            placeholder="dd-mm-yyyy"
-            onChange={(dates, currentDateString) => {
-              // Handle your logic
-              console.log({ dates, currentDateString })
-            }}
-          />
         </div>
       </div>
     </ComponentCard>

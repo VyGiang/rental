@@ -41,6 +41,7 @@ export default function RoomtHeaderCard() {
   const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(
     null
   )
+  const [isSelectOpen, setIsSelectOpen] = useState(false)
 
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
 
@@ -56,6 +57,7 @@ export default function RoomtHeaderCard() {
     if (selected) {
       setSelectedBuilding(selected)
       setSelectedRoom(null) // optional: reset room khi đổi tòa nhà
+      setIsSelectOpen(false) // icon quay lại khi chọn xong
     }
   }
 
@@ -72,14 +74,24 @@ export default function RoomtHeaderCard() {
       leftAction={
         <div className="flex items-center gap-2">
           <div>
-            <div className="relative">
+            <div
+              className="relative"
+              tabIndex={-1}
+              onFocus={() => setIsSelectOpen(true)}
+              onBlur={() => setIsSelectOpen(false)}
+            >
               <Select
                 options={options}
                 placeholder="Chọn tòa nhà"
                 onChange={handleSelectChange}
                 className="dark:bg-dark-900"
+                // Thêm onFocus/onBlur nếu cần
               />
-              <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
+              <span
+                className={`absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400 transition-transform duration-200 ${
+                  isSelectOpen ? "rotate-180" : ""
+                }`}
+              >
                 <ChevronDownIcon />
               </span>
             </div>

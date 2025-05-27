@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { ChevronDownIcon, ChevronUpIcon, Customers } from "@/icons"
+import { ChevronDownIcon, Customers } from "@/icons"
 
 export default function CustomerAccordion() {
   const [open, setOpen] = useState(false)
@@ -22,11 +22,11 @@ export default function CustomerAccordion() {
             Danh sách khách hàng
           </span>
         </div>
-        {open ? (
-          <ChevronUpIcon className=" text-gray-700" />
-        ) : (
-          <ChevronDownIcon className=" text-gray-700" />
-        )}
+        <ChevronDownIcon
+          className={`text-gray-700 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+        />
       </div>
 
       {/* Content */}

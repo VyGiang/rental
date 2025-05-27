@@ -1,12 +1,12 @@
-import BuildingInput from "@/components/form/form-elements/BuildingInput"
-import PaymentInputs from "@/components/form/form-elements/PaymentInput"
+import DropzoneComponent from "@/components/form/form-elements/DropZone"
+import RoomInput from "@/components/form/form-elements/RoomInput"
 import SaveButton from "@/components/form/form-elements/SaveButton"
 import { Metadata } from "next"
 import React from "react"
 
 export const metadata: Metadata = {
-  title: "Next.js Add Building Form  | RenAdmin",
-  description: "This is Add Building Form page for RenAdmin ",
+  title: "Next.js Add Room Form  | RenAdmin",
+  description: "This is Add Room Form page for RenAdmin ",
   icons: {
     icon: "/favicon.ico",
   },
@@ -19,14 +19,12 @@ export default function page() {
         className="text-xl font-semibold text-gray-800 dark:text-white/90 pb-4"
         x-text="pageName"
       >
-        Thêm toà nhà
+        Chỉnh sửa phòng
       </h2>
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+      <div className="grid grid-cols-1 ">
         <div className="space-y-6">
-          <BuildingInput />
-        </div>
-        <div className="space-y-6">
-          <PaymentInputs />
+          <RoomInput />
+          <DropzoneComponent />
           <SaveButton />
         </div>
       </div>

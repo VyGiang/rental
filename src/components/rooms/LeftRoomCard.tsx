@@ -54,6 +54,9 @@ function LeftRoomCard({ building, onRoomSelect }: LeftRoomCardProps) {
   const handleAddContract = () => {
     router.push("/contracts/addContract")
   }
+  const handleEditRoom = () => {
+    router.push("/rooms/editRoom")
+  }
 
   return (
     <ComponentCard icon={<Mark />} title={building.address}>
@@ -150,7 +153,12 @@ function LeftRoomCard({ building, onRoomSelect }: LeftRoomCardProps) {
                                 <DropdownItem onItemClick={closeDropdown}>
                                   Xuất hóa đơn
                                 </DropdownItem>
-                                <DropdownItem onItemClick={closeDropdown}>
+                                <DropdownItem
+                                  onItemClick={() => {
+                                    closeDropdown()
+                                    handleEditRoom()
+                                  }}
+                                >
                                   Sửa phòng
                                 </DropdownItem>
                                 <DropdownItem

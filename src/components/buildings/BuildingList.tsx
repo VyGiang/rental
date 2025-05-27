@@ -3,9 +3,9 @@ import React from "react"
 import { useRouter } from "next/navigation"
 import buildings from "../../../data/buildings.json"
 import Button from "@/components/ui/button/Button"
-import ComponentCard from "../common/ComponentCard"
 import { Computer, PlusCircle } from "@/icons"
-import ItemCard from "../common/ItemCard"
+import ItemCard from "./ItemCard"
+import ComponentCard from "../common/ComponentCard"
 
 function BuildingsList() {
   const router = useRouter()

@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { useRouter } from "next/navigation"
+
 import {
   BuildingColor,
   CheckCircleIcon,
@@ -62,6 +64,12 @@ const ItemCard: React.FC<ItemCardProps> = ({
     setIsOpen(false)
   }
 
+  const router = useRouter()
+
+  const handleEditBuilding = () => {
+    router.push("/buildings/editBuilding")
+  }
+
   return (
     <div className="relative z-10 rounded-2xl border border-gray-300 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-4 shadow-md w-full max-w-sm">
       {/* w-full max-w-sm:Chiều rộng tối đa theo cha,	Nhưng không bao giờ vượt quá 384px  */}
@@ -78,6 +86,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
             {/* truncate – Tự động cắt text + thêm ... */}
             <span className="truncate">{name}</span>
             <span className="shrink-0">
+              {/* để đảm bảo phần tử không bị co nhỏ lại khi thiếu không gian. */}
               <CheckCircleIcon />
             </span>
           </h3>
@@ -96,7 +105,10 @@ const ItemCard: React.FC<ItemCardProps> = ({
             className="w-40 p-2"
           >
             <DropdownItem
-              onItemClick={closeDropdown}
+              onItemClick={() => {
+                closeDropdown()
+                handleEditBuilding()
+              }}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
               Chỉnh sửa
